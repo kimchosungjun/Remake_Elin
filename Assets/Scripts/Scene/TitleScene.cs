@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class TitleScene : BaseScene
 {
-    public Scene CurrentSceneName { get; set; } = Scene.Title;
+    public SceneNames CurrentSceneName { get; set; } = SceneNames.Title;
     private void Start()
     {
         Init();
@@ -19,6 +19,6 @@ public class TitleScene : BaseScene
 
     public void EnterGame()
     {
-        GameManager.SceneM.LoadScene(CurrentSceneName+1);
+        GameManager.SceneM.LoadScene(CurrentSceneName + 1);
     }
 }

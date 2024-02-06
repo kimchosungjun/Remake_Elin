@@ -6,16 +6,16 @@ using System;
 
 public class SceneLoadManager
 {
-    public void LoadScene(Scene scene)
+    public void LoadScene(SceneNames _sceneName)
     {
         GameManager.Instance.Clear();
-        string sceneName = GetSceneName(scene);
+        string sceneName = GetSceneName(_sceneName);
         SceneManager.LoadScene(sceneName);
     }
 
-    string GetSceneName(Scene scene)
+    string GetSceneName(SceneNames _sceneName)
     {
-        string name = Enum.GetName(typeof(Scene), scene);
+        string name = Enum.GetName(typeof(SceneNames), _sceneName);
         return name;
     }
 }

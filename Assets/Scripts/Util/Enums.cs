@@ -2,9 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Scene
+public enum SceneNames
 {
     Title,
     Forest,
     End
+}
+
+public enum PlayerStateNames
+{
+    Idle,
+    Move,
+    Jump,
+    Air,
+    Max
 }
