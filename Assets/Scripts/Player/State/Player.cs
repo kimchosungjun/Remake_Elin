@@ -25,9 +25,9 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        spr = GetComponent<SpriteRenderer>();
+        spr = GetComponentInChildren<SpriteRenderer>();
         stateMachine = new PlayerStateMachine();
         state = new PlayerState[(int)PlayerStateNames.Max + 1];
         state[(int)PlayerStateNames.Idle] = new PlayerIdleState(this, stateMachine, "Idle");
