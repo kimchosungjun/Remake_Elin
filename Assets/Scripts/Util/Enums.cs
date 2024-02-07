@@ -5,6 +5,7 @@ using UnityEngine;
 public enum SceneNames
 {
     Title,
+    Tutorial,
     Forest,
     End
 }

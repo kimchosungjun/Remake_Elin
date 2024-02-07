@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour
     //EventManager
     private EventManager eventM = new EventManager();
     public static EventManager EventM { get { return instance.eventM; } }
-
+    private DialogueManager dialogueM = new DialogueManager();
+    public static DialogueManager DialogueM { get { return instance.dialogueM; } }
     private void Awake()
     {
         if (instance == null)
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
             instance = this.gameObject.GetComponent<GameManager>();
             DontDestroyOnLoad(this.gameObject);
         }
+        Init();
     }
 
     private void Update()
@@ -33,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     public void Init()
     {
-        
+        DialogueM.Init();
     }
 
     public void Clear()
