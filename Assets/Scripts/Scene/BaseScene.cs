@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public abstract class BaseScene : MonoBehaviour
 {
+    protected SceneNames CurrentSceneName { get; set; } = SceneNames.Title;
     private void Start()
     {
         Init();        
@@ -17,6 +18,7 @@ public abstract class BaseScene : MonoBehaviour
         //if (obj == null)
         //    MasterManager.Resource.Instantiate("UI/EventSystem");
     }
+    public virtual void LoadScene(SceneNames _sceneName) {  }
     public virtual void ExitGame() { Application.Quit(); }
     public abstract void Clear();
    

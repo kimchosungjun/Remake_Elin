@@ -18,6 +18,10 @@ public class PlayerGroundState : PlayerState
     public override void Update()
     {
         base.Update();
+        if(!player.GroundDetect())
+            stateMachine.ChangeState(player.state[(int)PlayerStateNames.Air]);
+        if (Input.GetKeyDown(KeyCode.LeftAlt) && player.CanRoll)
+            stateMachine.ChangeState(player.state[(int)PlayerStateNames.Roll]);
         if (Input.GetKey(KeyCode.Space) && player.GroundDetect())
             stateMachine.ChangeState(player.state[(int)PlayerStateNames.Jump]);
     }

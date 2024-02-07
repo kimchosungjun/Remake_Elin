@@ -6,10 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class TitleScene : BaseScene
 {
-    public SceneNames CurrentSceneName { get; set; } = SceneNames.Title;
     private void Start()
     {
         Init();
+        int width = 1920;
+        int height = 1080;
+        Screen.SetResolution(width, height, true);
+    }
+
+    public override void Init()
+    {
+        base.Init();
+        CurrentSceneName = SceneNames.Title;
     }
 
     public override void Clear()

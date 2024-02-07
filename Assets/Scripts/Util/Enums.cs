@@ -15,5 +15,8 @@ public enum PlayerStateNames
     Move,
     Jump,
     Air,
+    Roll,
+    Wall,
+    WallJump,
     Max
 }

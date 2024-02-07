@@ -7,7 +7,12 @@ public class Player : MonoBehaviour
     [Header("Move Info")]
     public float moveSpeed = 12f;
     public float jumpSpeed = 12f;
-    public bool LookLeft { get; private set; } = false;
+    public float rollSpeed = 15f;
+    public float rollGauge = 2f;
+    public float rollDuration = 0.4f;
+    public int moveDir { get; private set; } = 0;
+    public bool LookLeft { get; private set;} = false;
+    public bool CanRoll { get; private set; } = true;
     [Header("Collision Info")]
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float groundCheckDistance;
@@ -34,17 +39,27 @@ public class Player : MonoBehaviour
         state[(int)PlayerStateNames.Move] = new PlayerMoveState(this, stateMachine, "Move");
         state[(int)PlayerStateNames.Jump] = new PlayerJumpState(this, stateMachine, "Jump");
         state[(int)PlayerStateNames.Air] = new PlayerAirState(this, stateMachine, "Jump");
+        state[(int)PlayerStateNames.Roll] = new PlayerRollState(this, stateMachine, "Roll");
+        state[(int)PlayerStateNames.Wall] = new PlayerWallState(this, stateMachine, "Wall");
+        state[(int)PlayerStateNames.WallJump] = new PlayerWallJumpState(this, stateMachine, "Jump");
     }
 
     private void Start() { stateMachine.Initialize(state[(int)PlayerStateNames.Idle]); }
 
-    private void Update() { stateMachine.currentState.Update(); }
+    private void Update() 
+    { 
+        stateMachine.currentState.Update(); 
+        if(rollGauge > 0) 
+            rollGauge -= Time.deltaTime; 
+        CanRoll = (rollGauge > 0) ? false : true; 
+    }
 
     public void SetVelocity(float _xVelocity, float _yVelocity) { rb.velocity = new Vector2(_xVelocity, _yVelocity);  FlipControl(_xVelocity);}
 
     public bool GroundDetect() => Physics2D.Raycast(groundCheckTransform.position, Vector2.down, groundCheckDistance, groundLayer);
+    public bool WallDetect() => Physics2D.Raycast(wallCheckTransform.position, Vector2.right * moveDir, wallCheckDistance, groundLayer);
 
-    public void Flip() { LookLeft = !LookLeft; spr.flipX = LookLeft; } 
+    public void Flip() { LookLeft = !LookLeft; spr.flipX = LookLeft; moveDir = (LookLeft) ? -1 : 1; } 
 
     public void FlipControl(float _xVelocity)
     {
