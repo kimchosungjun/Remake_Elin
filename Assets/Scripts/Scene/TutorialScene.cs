@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TutorialScene : BaseScene
 {
-    private string tutorialHumanDialogue = "TutorialHuman1";
+    private string tutorialHumanDialogue = "TutorialHuman";
     private void Start()
     {
         GameManager.Instance.ManagersInit();

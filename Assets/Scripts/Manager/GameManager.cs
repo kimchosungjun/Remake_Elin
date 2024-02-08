@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     //DialogueManager
     private DialogueManager dialogueM = new DialogueManager();
     public static DialogueManager DialogueM { get { return instance.dialogueM; } }
+    //UIManager
+    private UIManager uiM = new UIManager(); 
+    public static UIManager UIM { get { return instance.uiM; } }
     #endregion
 
     private void Awake()
@@ -41,6 +44,7 @@ public class GameManager : MonoBehaviour
     {
         PlayerM.Init();
         DialogueM.Init();
+        UIM.Init();
     }
 
     public void Clear()
