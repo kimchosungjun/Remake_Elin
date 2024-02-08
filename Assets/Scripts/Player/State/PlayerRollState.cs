@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerRollState : PlayerState
 {
-    public PlayerRollState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName) { }
+    public PlayerRollState(PlayerController _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName) { }
 
     public override void Enter()
 

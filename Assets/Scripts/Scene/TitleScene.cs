@@ -29,4 +29,5 @@ public class TitleScene : BaseScene
     {
         GameManager.SceneM.LoadScene(CurrentSceneName + 1);
     }
+
 }

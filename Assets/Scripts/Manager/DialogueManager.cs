@@ -10,13 +10,15 @@ public class DialogueManager
     public void Init()
     {
         runner = GameObject.FindWithTag("Runner").GetComponent<DialogueRunner>();
-        //runner.AddCommandHandler("Test",Test);
+        runner.onDialogueComplete.AddListener(() => { GameManager.PlayerM.ControllPlayer(true); });
     }
 
     public void StartConversation(string _dialogueName)
     {
+        if (runner.IsDialogueRunning)
+            return;
+        GameManager.PlayerM.ControllPlayer(false);
         runner.StartDialogue(_dialogueName);
     }
-
 
 }

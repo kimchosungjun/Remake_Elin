@@ -7,6 +7,7 @@ public class TutorialScene : BaseScene
     private string tutorialHumanDialogue = "TutorialHuman1";
     private void Start()
     {
+        GameManager.Instance.ManagersInit();
         Init();
     }
 
@@ -14,11 +15,15 @@ public class TutorialScene : BaseScene
     {
         base.Init();
         CurrentSceneName = SceneNames.Tutorial;
-        GameManager.DialogueM.StartConversation(tutorialHumanDialogue);
     }
 
     public override void Clear()
     {
 
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+            GameManager.DialogueM.StartConversation(tutorialHumanDialogue);
     }
 }

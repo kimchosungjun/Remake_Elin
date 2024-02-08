@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerGroundState : PlayerState
 {
-    public PlayerGroundState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName) { }
+    public PlayerGroundState(PlayerController _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName) { }
     public override void Enter()
     {
         base.Enter();
@@ -20,9 +20,9 @@ public class PlayerGroundState : PlayerState
         base.Update();
         if(!player.GroundDetect())
             stateMachine.ChangeState(player.state[(int)PlayerStateNames.Air]);
-        if (Input.GetKeyDown(KeyCode.LeftAlt) && player.CanRoll)
+        if (Input.GetKeyDown(KeyCode.LeftAlt) && player.CanRoll && player.CanMove)
             stateMachine.ChangeState(player.state[(int)PlayerStateNames.Roll]);
-        if (Input.GetKey(KeyCode.Space) && player.GroundDetect())
+        if (Input.GetKey(KeyCode.Space) && player.GroundDetect() && player.CanMove)
             stateMachine.ChangeState(player.state[(int)PlayerStateNames.Jump]);
     }
 }

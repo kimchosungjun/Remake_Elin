@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    #region CoreManager
     //GameManager
     private static GameManager instance;
     public static GameManager Instance { get { return instance; } }
@@ -16,8 +17,11 @@ public class GameManager : MonoBehaviour
     //EventManager
     private EventManager eventM = new EventManager();
     public static EventManager EventM { get { return instance.eventM; } }
+    //DialogueManager
     private DialogueManager dialogueM = new DialogueManager();
     public static DialogueManager DialogueM { get { return instance.dialogueM; } }
+    #endregion
+
     private void Awake()
     {
         if (instance == null)
@@ -25,7 +29,7 @@ public class GameManager : MonoBehaviour
             instance = this.gameObject.GetComponent<GameManager>();
             DontDestroyOnLoad(this.gameObject);
         }
-        Init();
+        //ManagersInit();
     }
 
     private void Update()
@@ -33,8 +37,9 @@ public class GameManager : MonoBehaviour
         //Scene.Update();
     }
 
-    public void Init()
+    public void ManagersInit()
     {
+        PlayerM.Init();
         DialogueM.Init();
     }
 
