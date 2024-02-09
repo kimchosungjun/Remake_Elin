@@ -9,9 +9,10 @@ public class FadeEffectUI : MonoBehaviour
     [SerializeField] private Image fadeImage;
     [SerializeField] private Color fadeColor;
 
-    public bool FadeInComplete
+    public void SetScreenAlpha(float _alpha)
     {
-        get; set;
+        fadeColor.a = _alpha;
+        fadeImage.color = fadeColor;
     }
 
     public void ReferFadeImage()
@@ -26,7 +27,7 @@ public class FadeEffectUI : MonoBehaviour
     public void FadeEffect(bool _isFadeIn)
     {
         ReferFadeImage();
-        if(_isFadeIn)
+        if (_isFadeIn)
             StartCoroutine("FadeIn");
         else
             StartCoroutine("FadeOut");
