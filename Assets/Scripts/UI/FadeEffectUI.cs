@@ -32,6 +32,7 @@ public class FadeEffectUI : MonoBehaviour
         else
             StartCoroutine("FadeOut");
     }
+
     IEnumerator FadeIn() // นเพฦมü
     {
         fadeColor.a = 1f;
