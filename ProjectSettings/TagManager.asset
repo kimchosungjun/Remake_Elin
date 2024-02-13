@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Runner
   - UI
+  - Cameras
   layers:
   - Default
   - TransparentFX

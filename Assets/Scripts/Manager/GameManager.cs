@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     //UIManager
     private UIManager uiM = new UIManager(); 
     public static UIManager UIM { get { return instance.uiM; } }
+    //CameraManager
+    private CameraManager cameraM = new CameraManager();
+    public static CameraManager CameraM { get { return instance.cameraM; } }
     #endregion
 
     private void Awake()
@@ -45,6 +48,7 @@ public class GameManager : MonoBehaviour
         PlayerM.Init();
         DialogueM.Init();
         UIM.Init();
+        CameraM.Init();
     }
 
     public void Clear()
