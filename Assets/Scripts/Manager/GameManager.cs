@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
     //CameraManager
     private CameraManager cameraM = new CameraManager();
     public static CameraManager CameraM { get { return instance.cameraM; } }
+    //ResourceManager
+    private ResourceManager resoureM = new ResourceManager();
+    public static ResourceManager ResourceM { get { return instance.resoureM; } }
     #endregion
 
     private void Awake()
