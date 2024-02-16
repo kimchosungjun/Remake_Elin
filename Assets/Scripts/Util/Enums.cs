@@ -21,3 +21,10 @@ public enum PlayerStateNames
     WallJump,
     Max
 }
+
+public enum ItemTypes
+{
+    Equipment,
+    Consume,
+    Etc,
+}
